@@ -1,0 +1,25 @@
+name: Nikkei 225 Heatmap Daily
+on:
+  schedule:
+    # 日本時間 16:00 (世界標準時 07:00)
+    - cron: '0 7 * * *'
+  workflow_dispatch: # 手動で動かすためのボタン
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install playwright line-bot-sdk requests
+          python -m playwright install chromium
+      - name: Run Script
+        env:
+          LINE_TOKEN: ${{ secrets.LINE_TOKEN }}
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+        run: python capture_and_send.py
