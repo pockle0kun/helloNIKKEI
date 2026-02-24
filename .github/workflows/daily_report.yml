@@ -22,4 +22,4 @@ jobs:
         env:
           LINE_TOKEN: ${{ secrets.LINE_TOKEN }}
           IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
-        run: python capture_and_send.py
+        run: python capture_and_send_git.py
