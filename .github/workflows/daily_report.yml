@@ -2,7 +2,7 @@ name: Nikkei 225 Heatmap Daily
 on:
   schedule:
     # 毎日(0-6)から平日(1-5)に変更
-    # 日本時間 16:00 (世界標準時 07:00)
+    # 日本時間 16:05 (世界標準時 07:00)
     - cron: '0 7 * * 1-5'
   workflow_dispatch:
 jobs:
